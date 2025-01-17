@@ -21,7 +21,7 @@ To use the middleware, import it and apply it to your Zustand store:
 
 ```typescript
 import create from "zustand";
-import sync from "zustand-sync";
+import sync from "@alimert/zustand-sync";
 
 const useStore = create(
   sync((set) => ({
@@ -38,7 +38,7 @@ Additionally, you can provide enabled: false to disable the middleware. Default 
 
 ```typescript
 import create from "zustand";
-import sync from "zustand-sync";
+import sync from "@alimert/zustand-sync";
 
 const storageUnit = localStorage;
 
