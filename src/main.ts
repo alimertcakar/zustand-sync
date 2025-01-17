@@ -19,13 +19,19 @@ export interface SyncOptions extends PersistOptions<unknown> {
 const sync =
   <T extends object>(
     stateCreator: StateCreator<T>,
-    options = {} as SyncOptions
+    options = { enabled: true } as SyncOptions
   ): StateCreator<T> =>
   (set, get, api) => {
     const { enabled, name } = options;
 
-    const shouldSync = enabled && globalThis?.localStorage;
-    if (shouldSync) {
+    const shouldSyncFromLocalStorage =
+      enabled && name && globalThis?.localStorage;
+    const shouldSyncWithoutStorage =
+      enabled && !name && globalThis?.BroadcastChannel;
+
+    let _set = set;
+
+    if (shouldSyncFromLocalStorage) {
       window.addEventListener("storage", (e) => {
         const isStoreUpdate = e.key === name;
         if (!isStoreUpdate) return;
@@ -33,16 +39,34 @@ const sync =
         const currentState = get() as Record<string, unknown>;
         const newState = safeParseJSON(e.newValue)?.state;
 
-        const hasShallowUpdate = Object.keys(newState).some((key) => {
+        const hasShallowChange = Object.keys(newState).some((key) => {
           return newState[key] !== currentState[key];
         });
 
-        if (!hasShallowUpdate) return;
+        if (!hasShallowChange) return;
         set(newState);
       });
+    } else if (shouldSyncWithoutStorage) {
+      const channel = new BroadcastChannel("zustand-sync-tabs-channel");
+
+      channel.onmessage = (e) => {
+        const newState = e.data;
+        set(newState);
+      };
+
+      _set = (newState) => {
+        const currentState = get() as Record<string, unknown>;
+        const hasShallowChange = Object.keys(newState).some((key) => {
+          return newState[key] !== currentState[key];
+        });
+
+        if (!hasShallowChange) return;
+        channel.postMessage(newState);
+        set(newState);
+      };
     }
 
-    return stateCreator(set, get, api);
+    return stateCreator(_set, get, api);
   };
 
 export default sync;
