@@ -3,6 +3,7 @@
 This middleware for Zustand allows you to synchronize store data between different browser tabs. When the state changes in one tab, the updated state will be reflected in all other open tabs. You can use this with zustand/persist with no issues.
 Syncing is only supported with localStorage (duh).
 
+Demo: https://zustand-sync.netlify.app/
 Codesandbox: https://codesandbox.io/p/sandbox/zustand-sync-zk5dvg
 
 ## Installation
