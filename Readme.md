@@ -69,6 +69,8 @@ const useStore = create(
 );
 ```
 
+Warning: Don't call `sync(persist(...)) instead of persist(sync())` if you want to sync only the data you filtered in `partialize` in `persistOptions`.
+
 ## Thank you! ❤️
 
 ⭐ If you liked the library, can you star this repo? ⭐
