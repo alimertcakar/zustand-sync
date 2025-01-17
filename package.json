@@ -6,6 +6,7 @@
   "main": "dist/main.ts",
   "scripts": {
     "prepublish": "tsc",
+    "publish": "npm publish --access public",
     "dev": "vite",
     "build": "tsc",
     "preview": "vite preview"
