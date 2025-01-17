@@ -1,5 +1,5 @@
 {
-  "name": "zustand-sync",
+  "name": "@alimert/zustand-sync",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
