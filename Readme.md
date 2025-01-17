@@ -25,7 +25,7 @@ import sync from "zustand-sync";
 
 const useStore = create(
   sync((set) => ({
-    // ...your state and actions...
+    // ...your implementation
   }))
 );
 ```
@@ -55,8 +55,7 @@ const useStore = create(
   persist(
     sync(
       (set) => ({
-        count: 0,
-        increment: () => set((state) => ({ count: state.count + 1 })),
+        // ...your implementation
       }),
       { ...persistOptions, enabled: storageUnit === localStorage }
     ),
