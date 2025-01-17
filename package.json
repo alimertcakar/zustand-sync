@@ -1,6 +1,6 @@
 {
   "name": "zustand-sync-middleware",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "type": "module",
   "types": "dist/main.d.ts",
   "main": "dist/main.js",
