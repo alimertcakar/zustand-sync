@@ -2,9 +2,12 @@
   "name": "@alimert/zustand-sync",
   "version": "0.0.4",
   "type": "module",
+  "types": "dist/main.d.ts",
+  "main": "dist/main.ts",
   "scripts": {
+    "prepublish": "tsc",
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc",
     "preview": "vite preview"
   },
   "devDependencies": {
