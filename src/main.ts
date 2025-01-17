@@ -50,19 +50,21 @@ const sync =
       const channel = new BroadcastChannel("zustand-sync-tabs-channel");
 
       channel.onmessage = (e) => {
-        const newState = e.data;
+        const newState = safeParseJSON(e.data);
         set(newState);
       };
 
+      channel.postMessage(JSON.stringify(get()));
+
       _set = (newState) => {
         const currentState = get() as Record<string, unknown>;
+        set({ ...currentState, ...newState });
         const hasShallowChange = Object.keys(newState).some((key) => {
           return newState[key] !== currentState[key];
         });
 
         if (!hasShallowChange) return;
-        channel.postMessage(newState);
-        set(newState);
+        channel.postMessage(JSON.stringify({ ...currentState, ...newState }));
       };
     }
 
