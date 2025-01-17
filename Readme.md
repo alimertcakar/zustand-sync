@@ -35,9 +35,8 @@ const useStore = create(
 
 ## Usage with zustand/persist
 
-You have to put `sync` middleware before `persist` middleware. Share persist options with it as well. (It actually only needs name key, but no need to write it twice.)
-
-Additionally, you can provide enabled: false to disable the middleware. Default is true.
+You have to put `sync` middleware before `persist` middleware. Share the key you used to persist your store at. (This is used to watch `localStorage[persistanceKey]`)
+Additionally, you can add `enabled: false` to skip the middleware.
 
 ```typescript
 import create from "zustand";
@@ -45,13 +44,20 @@ import sync from "@alimert/zustand-sync";
 
 const storageUnit = localStorage;
 
+const persistanceKey = "persisted-store";
+
 const persistOptions = {
-  name: "persisted-store",
+  name: persistanceKey,
   storage: createJSONStorage(() => storageUnit),
   partialize: (state) => ({
     count: state.count,
     name: state.name,
   }),
+};
+
+const syncOptions = {
+  name: persistanceKey,
+  enabled: storageUnit === localStorage,
 };
 
 const useStore = create(
@@ -60,7 +66,7 @@ const useStore = create(
       (set) => ({
         // ...your slices
       }),
-      { ...persistOptions, enabled: storageUnit === localStorage }
+      syncOptions
     ),
     persistOptions
   )
