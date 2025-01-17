@@ -28,7 +28,7 @@ import sync from "@alimert/zustand-sync";
 
 const useStore = create(
   sync((set) => ({
-    // ...your implementation
+    // ...your slices
   }))
 );
 ```
@@ -58,7 +58,7 @@ const useStore = create(
   persist(
     sync(
       (set) => ({
-        // ...your implementation
+        // ...your slices
       }),
       { ...persistOptions, enabled: storageUnit === localStorage }
     ),
@@ -73,6 +73,8 @@ export default useStore;
 
 If you liked the library, can you star this repo?  
 https://github.com/alimertcakar/zustand-sync
+
+Also, the source code is super simple and pr's are welcome!
 
 ## License
 
