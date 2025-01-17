@@ -39,11 +39,7 @@ You have to put `sync` middleware before `persist` middleware. Share the key you
 Additionally, you can add `enabled: false` to skip the middleware.
 
 ```typescript
-import create from "zustand";
-import sync from "zustand-sync-middleware";
-
 const storageUnit = localStorage;
-
 const persistanceKey = "persisted-store";
 
 const persistOptions = {
@@ -71,8 +67,6 @@ const useStore = create(
     persistOptions
   )
 );
-
-export default useStore;
 ```
 
 ## Thank you! ❤️
