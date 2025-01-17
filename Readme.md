@@ -69,6 +69,11 @@ const useStore = create(
 export default useStore;
 ```
 
+## Thank you!
+
+If you liked the library, can you star this repo?  
+https://github.com/alimertcakar/zustand-sync
+
 ## License
 
 This project is licensed under the MIT License. Meaning: do whatever you want with it as long as you don't sue me.

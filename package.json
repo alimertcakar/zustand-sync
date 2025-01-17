@@ -19,5 +19,20 @@
   "peerDependencies": {
     "zustand": "^5.0.3"
   },
-  "author": "Ali Mert Çakar"
+  "author": "Ali Mert Çakar",
+  "keywords": [
+    "zustand",
+    "sync",
+    "middleware",
+    "zustand-sync-middleware",
+    "zustand-middleware",
+    "react",
+    "react 18",
+    "hooks",
+    "state",
+    "tiny",
+    "typescript",
+    "javascript",
+    "alimert"
+  ]
 }
