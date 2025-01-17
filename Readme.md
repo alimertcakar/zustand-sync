@@ -11,11 +11,11 @@ Codesandbox: https://codesandbox.io/p/sandbox/zustand-sync-zk5dvg
 To install the middleware, you can use pnpm, npm or yarn:
 
 ```sh
-pnpm add @alimert/zustand-sync
+pnpm add zustand-sync-middleware
 # or
-npm install @alimert/zustand-sync
+npm install zustand-sync-middleware
 # or
-yarn add @alimert/zustand-sync
+yarn add zustand-sync-middleware
 ```
 
 ## Usage
@@ -24,7 +24,7 @@ To use the middleware, import it and apply it to your Zustand store:
 
 ```typescript
 import create from "zustand";
-import sync from "@alimert/zustand-sync";
+import sync from "zustand-sync-middleware";
 
 const useStore = create(
   sync((set) => ({
@@ -40,7 +40,7 @@ Additionally, you can add `enabled: false` to skip the middleware.
 
 ```typescript
 import create from "zustand";
-import sync from "@alimert/zustand-sync";
+import sync from "zustand-sync-middleware";
 
 const storageUnit = localStorage;
 
@@ -75,9 +75,9 @@ const useStore = create(
 export default useStore;
 ```
 
-## Thank you!
+## Thank you! ❤️
 
-If you liked the library, can you star this repo?  
+⭐ If you liked the library, can you star this repo? ⭐
 https://github.com/alimertcakar/zustand-sync
 
 Also, the source code is super simple and pr's are welcome!
